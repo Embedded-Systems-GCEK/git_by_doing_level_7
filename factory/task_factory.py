@@ -10,9 +10,9 @@ from factory.quiz import Quiz
 class TaskFactory:
     def __init__(self,file: Files):
         self.file = file
-        self.questions = Questions(file)
+        self.questions_helper = Questions(file)
         self.status = Status(len(self.questions.get_questions()), self.questions)
-        self.answers = AnswersHelper(self.questions.get_questions())
+        self.answers = AnswersHelper(qustion_helper=self.questions_helper)
 
     def create_quiz(self) -> Quiz:
         return Quiz(self.questions, self.file, self.status)

@@ -6,6 +6,7 @@ class Status:
         self.question_helper = question_helper
         self.questions = question_helper.get_questions()
         self.asked_questions = len(question_helper.get_asked_question())
+    
     def remaining(self):
         return len(self.questions) - self.asked_questions
     def evalueate(self):
@@ -14,4 +15,5 @@ class Status:
         print("Status:")
         print(f"Total questions: {self.total_questions}")
         print(f"Asked questions: {self.asked_questions}")
+        print(f"Current question: {self.question_helper.current_question_number}")
         print(f"Remaining questions: {self.remaining()}")

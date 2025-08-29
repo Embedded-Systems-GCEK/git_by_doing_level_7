@@ -1,29 +1,27 @@
 import json
-
+from modules.questions import Questions
 class AnswersHelper:
-    def __init__(self,questions):
-        self.questions = questions
-    def add_answer(self, question, answer):
-        self.questions[question]["ans"] = answer
-    def get_answer(self, question):
-        return self.questions[question].get("ans", None)
-    
-    def check_if_follow_up(self):
-        # print(list(self.questions["questions"]))
-        for question in list(self.questions["questions"]):
-            if "follow_up" in question.keys():
-                # print(f"Question '{question['question']}' has follow-up questions.")
-                for follow_up in question["follow_up"].values():
-                    # print(f" - Follow-up question: {follow_up}")
-                    print(follow_up)
-# def get_optional_questions():
-#     optional_questions = []
-#     for q in questions["questions"]:
-#         if "follow_up" in q:
-#             for follow_up in q["follow_up"].values():
-#                 optional_questions.append(follow_up)
-#     return optional_questions
-
-# if __name__ == "__main__":
-#     ans = Answers(questions)
-#     ans.check_if_follow_up()
+    def __init__(self,question_helper: Questions):
+        self.question_helper = question_helper
+        self.current_ans = None
+    def get_current_answer(self) -> str:
+        return self.current_ans
+    def add_answer(self) -> bool:
+        self.question_helper.get_current_question()["answer"] = self.current_ans
+        return True
+    def get_answer(self, question) -> str:
+        return self.questions[question].get("answer", None)
+    def check_if_answer_available(self) -> bool:
+        question = self.question_helper.get_current_question()
+        return question is not None and "ans" in question
+    def verify_answer(self, answer: str) -> bool:
+        self.current_ans = answer
+        if not self.check_if_answer_available():
+            self.add_answer()
+            return True
+        else:
+            answers = self.question_helper.get_current_question().get("answer", [])
+            if answer in answers:
+                self.current_ans = answer
+                return True
+        return False

@@ -41,13 +41,7 @@ def main():
     task_factory = TaskFactory(file)
     quiz = task_factory.create_quiz()
     quiz.start()
-    len_quiz = quiz.questions.get_num_questions()
-    for num in range(len_quiz):
-         ans = quiz.questions.ask_question_by_number(num)
-         quiz.answers.verify_and_add_answer(num,ans)
-         quiz.questions.check_if_follow_up(quiz.questions.get_current_question())
-         quiz.status.progress()
+    quiz.ask_questions()
     quiz.cool()
-
 if __name__  == "__main__":
     main()
