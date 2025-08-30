@@ -1,4 +1,5 @@
 import json
+data_file_path = "data.json"
 
 class Files:
     def __init__(self,file_path):
@@ -16,3 +17,7 @@ class Files:
             file.seek(0)
             json.dump(data, file)
             file.truncate()
+    def get_status(self):
+        with open(self.file_path, 'r') as file:
+            data = json.load(file)
+            return data.get("status", {})
