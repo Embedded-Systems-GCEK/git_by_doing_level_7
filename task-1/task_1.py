@@ -1,15 +1,19 @@
-from modules.file import Files
-from modules.questions import Questions
-from factory.task_factory import TaskFactory
-questions_path = 'questions.json'
-file = Files(questions_path)
+# Task 1 of the Level 7
+from controllers.files import FileHandler
+from controllers.status import Status
+from controllers.question_helper import QuestionsHelper
+from controllers.answer_helper import AnswersHelper
+from controllers.quiz import QuizController as Q
 
-def main():
-    task_factory = TaskFactory(file)
-    quiz = task_factory.create_quiz()
-    quiz.start()
-    quiz.ask_questions()
-    quiz.save_results()
-    quiz.cool()
-if __name__  == "__main__":
-    main()
+
+status = Status()
+files = FileHandler(status=status)
+question_helper = QuestionsHelper(files)
+answer_helper = AnswersHelper(file_handler=files, question_helper=question_helper)
+
+quiz = Q(file_handler=files, status=status, question_helper=question_helper, answer_helper=answer_helper)
+
+quiz.initialize()
+quiz.start()
+# quiz.file_handler.save()
+# quiz.done()

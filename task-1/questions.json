@@ -1,64 +1,65 @@
 {
-    "questions": [
-        {
-            "id": 0,
-            "question": "Did You complete the previous rounds",
-            "options": [
-                "Yes",
-                "No"
-            ],
-            "answers": [
-                "Yes",
-                "Y"
-            ],
-            "is_asked": false,
-            "is_correct": false,
-            "is_cascade": true,
-            "follow_up": {
-                "question_1": {
-                    "text": "Why did you not complete the previous rounds?",
-                    "options": [
-                        "I Dont Know",
-                        "Not Feeling Upto It",
-                        "I think is silly"
-                    ],
-                    "ans":""
-                },
-                "question_2": {
-                    "text": "What obstacles did you face?",
-                    "options": [
-                        "Technical issues",
-                        "Understanding the material",
-                        "Other"
-                    ]
-                }
-            }
+  "questions": [
+    {
+      "id": 0,
+      "question": "Did You complete the previous rounds",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answers": [
+        "Yes",
+        "Y"
+      ],
+      "is_asked": true,
+      "is_correct": true,
+      "is_cascade": true,
+      "follow_up": {
+        "question_1": {
+          "text": "Why did you not complete the previous rounds?",
+          "options": [
+            "I Dont Know",
+            "Not Feeling Upto It",
+            "I think is silly"
+          ],
+          "ans": ""
         },
-        {
-            "id": 1,
-            "question": "What is you Name",
-            "options": [
-                ""
-            ],
-            "answers": [
-                "y"
-            ],
-            "is_asked": false,
-            "is_correct": false
-        },
-        {
-            "id": 2,
-            "question": "Did you fork the repo",
-            "options": [
-                "Yes",
-                "No"
-            ],
-            "answers": [
-                "Yes",
-                "Y"
-            ],
-            "is_asked": false,
-            "is_correct": false
+        "question_2": {
+          "text": "What obstacles did you face?",
+          "options": [
+            "Technical issues",
+            "Understanding the material",
+            "Other"
+          ]
         }
-    ]
+      },
+      "is_answered": true
+    },
+    {
+      "id": 1,
+      "question": "What is you Name",
+      "options": [
+        ""
+      ],
+      "answers": [
+        "y"
+      ],
+      "is_asked": false,
+      "is_correct": false
+    },
+    {
+      "id": 2,
+      "question": "Did you fork the repo",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answers": [
+        "Yes",
+        "Y"
+      ],
+      "is_asked": false,
+      "is_correct": false
+    }
+  ]
 }
